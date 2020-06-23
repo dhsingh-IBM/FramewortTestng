@@ -247,6 +247,14 @@ public class WebDriverUtils {
 		public void switchOut() {
 			driver.switchTo().defaultContent();
 		}
+		public void getTextNode(By loc, String text)
+		{
+			
+			String mytext = (String)((JavascriptExecutor)driver).executeScript("return arguments[0].childNodes[1].textContent;", find(loc));
+			//System.out.println(mytext);
+			
+			Assert.assertEquals(mytext.trim(), text);
+		}
 		
 		public void exit() {
 			try
